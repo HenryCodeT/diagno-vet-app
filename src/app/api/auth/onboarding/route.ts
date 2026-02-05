@@ -95,23 +95,56 @@ export async function POST(request: Request) {
     });
 
     // 4. Update user metadata in Supabase to mark onboarding as complete
-    const { error: supabaseError } = await supabase.auth.admin.updateUserById(
-      session.user.id,
-      {
-        user_metadata: {
-          onboarding: true,
-          firstName: result.user.firstName,
-          lastName: result.user.lastName,
-        },
-      }
-    );
+    // First verify the user exists in Supabase
+    const { data: existingUser, error: getUserError } =
+      await supabase.auth.admin.getUserById(session.user.id);
 
-    if (supabaseError) {
-      console.error("Supabase update error:", supabaseError);
-      return NextResponse.json(
-        { error: supabaseError.message },
-        { status: 400 }
+    if (getUserError || !existingUser?.user) {
+      console.error("Supabase user not found:", getUserError);
+      // If user doesn't exist in Supabase, create them
+      const { data: newUser, error: createError } =
+        await supabase.auth.admin.createUser({
+          id: session.user.id,
+          email: session.user.email!,
+          email_confirm: true,
+          user_metadata: {
+            onboarding: true,
+            firstName: result.user.firstName,
+            lastName: result.user.lastName,
+            language: "es",
+          },
+        });
+
+      if (createError) {
+        console.error("Supabase create/update error:", createError);
+        // Don't fail the onboarding if Supabase update fails - Prisma update succeeded
+        console.warn(
+          "Warning: User created in Prisma but Supabase sync failed. User ID:",
+          session.user.id
+        );
+      }
+    } else {
+      // User exists, update them
+      const { error: supabaseError } = await supabase.auth.admin.updateUserById(
+        session.user.id,
+        {
+          user_metadata: {
+            ...existingUser.user.user_metadata,
+            onboarding: true,
+            firstName: result.user.firstName,
+            lastName: result.user.lastName,
+          },
+        }
       );
+
+      if (supabaseError) {
+        console.error("Supabase update error:", supabaseError);
+        // Don't fail the onboarding if Supabase update fails - Prisma update succeeded
+        console.warn(
+          "Warning: User updated in Prisma but Supabase sync failed. User ID:",
+          session.user.id
+        );
+      }
     }
 
     return NextResponse.json({

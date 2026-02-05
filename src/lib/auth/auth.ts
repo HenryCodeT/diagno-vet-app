@@ -61,7 +61,100 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
   callbacks: {
     async jwt({ token, user, account, trigger }) {
-      if (user) {
+      // Handle Google OAuth sign-in
+      if (account?.provider === "google" && user) {
+        try {
+          const supabase = getSupabaseAdmin();
+          const nameParts = user.name?.split(" ") ?? [];
+          const firstName = nameParts[0] ?? null;
+          const lastName = nameParts.slice(1).join(" ") || null;
+
+          // Try to create user in Supabase
+          const { data: newUser, error: createError } =
+            await supabase.auth.admin.createUser({
+              email: user.email!,
+              email_confirm: true,
+              user_metadata: {
+                firstName,
+                lastName,
+                avatarUrl: user.image ?? null,
+                language: "es",
+                onboarding: false,
+              },
+            });
+
+          let supabaseUserId: string;
+          let supabaseUser;
+
+          if (createError) {
+            // User might already exist, try to find them by email
+            // Check error code or message for existing user
+            const isExistingUserError =
+              createError.status === 422 ||
+              createError.message?.toLowerCase().includes("already") ||
+              createError.message?.toLowerCase().includes("exists") ||
+              createError.code === "user_already_exists";
+
+            if (isExistingUserError) {
+              // List users and find by email
+              const { data: usersData, error: listError } =
+                await supabase.auth.admin.listUsers();
+              
+              if (listError) {
+                throw listError;
+              }
+
+              const existingUser = usersData?.users.find(
+                (u) => u.email?.toLowerCase() === user.email?.toLowerCase()
+              );
+
+              if (existingUser) {
+                supabaseUserId = existingUser.id;
+                supabaseUser = existingUser;
+              } else {
+                // User doesn't exist, but creation failed - this is unexpected
+                throw new Error(
+                  `Failed to create user and user not found: ${createError.message}`
+                );
+              }
+            } else {
+              // Different error, throw it
+              throw createError;
+            }
+          } else {
+            supabaseUserId = newUser.user.id;
+            supabaseUser = newUser.user;
+          }
+
+          // Set token values from Supabase user
+          token.id = supabaseUserId;
+          token.email = supabaseUser.email!;
+          token.firstName =
+            supabaseUser.user_metadata?.firstName ??
+            user.name?.split(" ")[0] ??
+            null;
+          token.lastName =
+            supabaseUser.user_metadata?.lastName ??
+            user.name?.split(" ").slice(1).join(" ") ??
+            null;
+          token.avatarUrl =
+            supabaseUser.user_metadata?.avatarUrl ?? user.image ?? null;
+          token.language = supabaseUser.user_metadata?.language ?? "es";
+          token.onboarding = supabaseUser.user_metadata?.onboarding ?? false;
+        } catch (error) {
+          console.error("Error handling Google sign-in:", error);
+          // Fallback to NextAuth user data if Supabase fails
+          // Note: This will cause onboarding to fail, but at least the user can sign in
+          token.id = user.id;
+          token.email = user.email!;
+          token.firstName = user.name?.split(" ")[0] ?? null;
+          token.lastName = user.name?.split(" ").slice(1).join(" ") ?? null;
+          token.avatarUrl = user.image ?? null;
+          token.language = "es";
+          token.onboarding = false;
+        }
+      } else if (user) {
+        // Handle credentials sign-in (user already exists in Supabase)
         token.id = user.id;
         token.email = user.email;
         token.firstName = user.firstName;
@@ -71,21 +164,18 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         token.onboarding = user.onboarding;
       }
 
-      if (account?.provider === "google" && user) {
-        token.firstName = user.name?.split(" ")[0] ?? null;
-        token.lastName = user.name?.split(" ").slice(1).join(" ") ?? null;
-        token.avatarUrl = user.image ?? null;
-        token.onboarding = false; // New Google users need onboarding
-      }
-
       // When session is updated (e.g., after onboarding), refresh user data from Supabase
       if (trigger === "update" && token.id) {
         try {
           const supabase = getSupabaseAdmin();
-          const { data } = await supabase.auth.admin.getUserById(token.id as string);
+          const { data } = await supabase.auth.admin.getUserById(
+            token.id as string
+          );
           if (data?.user) {
-            token.firstName = data.user.user_metadata?.firstName ?? token.firstName;
-            token.lastName = data.user.user_metadata?.lastName ?? token.lastName;
+            token.firstName =
+              data.user.user_metadata?.firstName ?? token.firstName;
+            token.lastName =
+              data.user.user_metadata?.lastName ?? token.lastName;
             token.onboarding = data.user.user_metadata?.onboarding ?? false;
           }
         } catch (error) {
