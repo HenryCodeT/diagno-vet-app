@@ -66,30 +66,72 @@ export async function POST(request: Request) {
       const firstName = nameParts[0] || null;
       const lastName = nameParts.slice(1).join(" ") || null;
 
-      // 3. Create or update user in Prisma
-      const user = await tx.user.upsert({
+      // 3. Check if user exists by ID first
+      let existingUser = await tx.user.findUnique({
         where: { id: session.user.id },
-        create: {
-          id: session.user.id,
-          email: session.user.email,
-          firstName,
-          lastName,
-          phone: data.professional.phone,
-          professionalTitle: data.professional.title,
-          professionalLicense: data.professional.license || null,
-          onboarding: true,
-          veterinary: { connect: { id: veterinary.id } },
-        },
-        update: {
-          firstName,
-          lastName,
-          phone: data.professional.phone,
-          professionalTitle: data.professional.title,
-          professionalLicense: data.professional.license || null,
-          onboarding: true,
-          veterinary: { connect: { id: veterinary.id } },
-        },
       });
+
+      let user;
+
+      // If user doesn't exist by ID, check by email
+      if (!existingUser) {
+        existingUser = await tx.user.findUnique({
+          where: { email: session.user.email! },
+        });
+
+        // If user exists by email but with different ID, there's a sync issue
+        // In this case, we should update the existing user (can't change ID)
+        if (existingUser && existingUser.id !== session.user.id) {
+          // Update the existing user with the email-based ID
+          // Note: This means the Supabase ID and Prisma ID are out of sync
+          // This shouldn't happen in normal flow, but we handle it gracefully
+          user = await tx.user.update({
+            where: { email: session.user.email! },
+            data: {
+              firstName,
+              lastName,
+              phone: data.professional.phone,
+              professionalTitle: data.professional.title,
+              professionalLicense: data.professional.license || null,
+              onboarding: true,
+              veterinary: { connect: { id: veterinary.id } },
+            },
+          });
+          return { veterinary, user };
+        }
+      }
+
+      // 4. Create or update user
+      if (existingUser) {
+        // User exists with matching ID, update it
+        user = await tx.user.update({
+          where: { id: session.user.id },
+          data: {
+            firstName,
+            lastName,
+            phone: data.professional.phone,
+            professionalTitle: data.professional.title,
+            professionalLicense: data.professional.license || null,
+            onboarding: true,
+            veterinary: { connect: { id: veterinary.id } },
+          },
+        });
+      } else {
+        // User doesn't exist, create it
+        user = await tx.user.create({
+          data: {
+            id: session.user.id,
+            email: session.user.email!,
+            firstName,
+            lastName,
+            phone: data.professional.phone,
+            professionalTitle: data.professional.title,
+            professionalLicense: data.professional.license || null,
+            onboarding: true,
+            veterinary: { connect: { id: veterinary.id } },
+          },
+        });
+      }
 
       return { veterinary, user };
     });

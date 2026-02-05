@@ -44,6 +44,10 @@
       "noReports": "No reports found",
       "noPatients": "No patients found"
     },
+    "recentReports": {
+      "title": "Recent Reports",
+      "noReports": "No recent reports"
+    },
     "veterinaryInfo": {
       "title": "Your Veterinary",
       "legalName": "Legal Name",
@@ -62,6 +66,67 @@
       "addPatient": "Add Patient",
       "scheduleAppointment": "Schedule Appointment",
       "viewReports": "View Reports"
+    }
+  },
+  "reports": {
+    "list": {
+      "title": "Reports",
+      "newReport": "New Report",
+      "labels": {
+        "patient": "Patient",
+        "speciesBreed": "Species/Breed",
+        "type": "Type",
+        "date": "Date",
+        "owner": "Owner",
+        "veterinarian": "Veterinarian"
+      },
+      "status": {
+        "completed": "Completed",
+        "sent": "Sent",
+        "pending": "Pending",
+        "draft": "Draft"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "download": "Download"
+      }
+    },
+    "new": {
+      "pageTitle": "Analyze Patient",
+      "pageDescription": "Fill in the patient data and upload study images",
+      "patientInfo": "Patient Information",
+      "contactInfo": "Contact Information",
+      "images": "Study Images",
+      "date": "Date",
+      "patientName": "Patient Name",
+      "patientNamePlaceholder": "e.g. Max, Luna",
+      "species": "Species",
+      "speciesPlaceholder": "Select species",
+      "breed": "Breed",
+      "breedPlaceholder": "Select breed",
+      "noBreeds": "Select a species first",
+      "birthDate": "Birth Date",
+      "age": "Age:",
+      "weight": "Weight",
+      "unit": "Unit",
+      "gender": "Gender",
+      "genderPlaceholder": "Select gender",
+      "neutered": "Neutered / Spayed",
+      "studyType": "Study Type",
+      "studyTypePlaceholder": "Select study type",
+      "referringProfessional": "Referring Professional",
+      "referringProfessionalPlaceholder": "Dr. Name",
+      "referringEmail": "Professional Email",
+      "guardian": "Guardian / Owner",
+      "guardianPlaceholder": "Guardian's name",
+      "guardianEmail": "Guardian Email",
+      "emailPlaceholder": "email@example.com",
+      "dropzoneText": "Drag images here or click to select",
+      "dropzoneActiveText": "Drop the images here...",
+      "noImages": "No images uploaded",
+      "clearForm": "Clear form",
+      "continue": "Continue"
     }
   },
   "auth": {
@@ -178,42 +243,54 @@
       "requiredFields": "Please complete all required fields"
     }
   },
-  "reports": {
-    "new": {
-      "pageTitle": "Analyze Patient",
-      "pageDescription": "Fill in the patient data and upload study images",
-      "patientInfo": "Patient Information",
-      "contactInfo": "Contact Information",
-      "images": "Study Images",
-      "date": "Date",
-      "patientName": "Patient Name",
-      "patientNamePlaceholder": "e.g. Max, Luna",
-      "species": "Species",
-      "speciesPlaceholder": "Select species",
-      "breed": "Breed",
-      "breedPlaceholder": "Select breed",
-      "noBreeds": "Select a species first",
-      "birthDate": "Birth Date",
-      "age": "Age:",
-      "weight": "Weight",
-      "unit": "Unit",
-      "gender": "Gender",
-      "genderPlaceholder": "Select gender",
-      "neutered": "Neutered / Spayed",
-      "studyType": "Study Type",
-      "studyTypePlaceholder": "Select study type",
-      "referringProfessional": "Referring Professional",
-      "referringProfessionalPlaceholder": "Dr. Name",
-      "referringEmail": "Professional Email",
-      "guardian": "Guardian / Owner",
-      "guardianPlaceholder": "Guardian's name",
-      "guardianEmail": "Guardian Email",
-      "emailPlaceholder": "email@example.com",
-      "dropzoneText": "Drag images here or click to select",
-      "dropzoneActiveText": "Drop the images here...",
-      "noImages": "No images uploaded",
-      "clearForm": "Clear form",
-      "continue": "Continue"
+  "studies": {
+    "list": {
+      "title": "My Studies",
+      "newStudy": "New Study",
+      "labels": {
+        "patient": "Patient",
+        "speciesBreed": "Species/Breed",
+        "type": "Type",
+        "date": "Date",
+        "veterinarian": "Veterinarian"
+      },
+      "status": {
+        "completed": "Completed",
+        "inProgress": "In Progress",
+        "pending": "Pending",
+        "cancelled": "Cancelled"
+      },
+      "actions": {
+        "view": "View",
+        "report": "Report"
+      }
+    }
+  },
+  "patients": {
+    "list": {
+      "title": "Patients",
+      "newPatient": "New Patient",
+      "labels": {
+        "speciesBreed": "Species/Breed",
+        "age": "Age",
+        "gender": "Gender",
+        "owner": "Owner",
+        "phone": "Phone",
+        "lastVisit": "Last Visit"
+      },
+      "gender": {
+        "male": "Male",
+        "female": "Female",
+        "unknown": "Unknown"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit"
+      }
     }
   },
   "language": {

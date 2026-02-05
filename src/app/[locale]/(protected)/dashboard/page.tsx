@@ -1,27 +1,29 @@
-import { prisma } from "@/lib/prisma";
-import { auth } from "@/lib/auth/auth";
-import { StatsCards, SearchBar, EmptyState } from "@/components/dashboard";
+import { StatsCards, SearchBar, RecentReports } from "@/components/dashboard";
+import { mockReports } from "@/lib/mocks/reports";
+import { mockPatients } from "@/lib/mocks/patients";
 
 export default async function DashboardPage() {
-  const session = await auth();
+  // Use mock data for stats
+  const totalReports = mockReports.length;
+  const totalPatients = mockPatients.length;
+  const activeReports = mockReports.filter(
+    (r) => r.status === "pending" || r.status === "draft"
+  ).length;
 
-  // Fetch counts for stats
-  const [totalReports, totalPatients, activeReports] = await Promise.all([
-    // For now, return 0 since we don't have Report model yet
-    Promise.resolve(0),
-    // Count patients associated with the user's veterinary
-    prisma.user
-      .findUnique({
-        where: { id: session?.user?.id },
-        include: { veterinary: true },
-      })
-      .then((user) => {
-        // Placeholder - will be replaced when Patient model is added
-        return 4;
-      }),
-    // Active reports count
-    Promise.resolve(0),
-  ]);
+  // Prepare reports data for client component
+  const recentReports = mockReports.slice(0, 6).map((report) => ({
+    id: report.id,
+    reportNumber: report.reportNumber,
+    patientName: report.patientName,
+    species: report.species,
+    breed: report.breed,
+    ownerName: report.ownerName,
+    date: report.date,
+    status: report.status,
+    type: report.type,
+    veterinarian: report.veterinarian,
+    createdAt: report.createdAt,
+  }));
 
   return (
     <div className="space-y-6">
@@ -35,10 +37,8 @@ export default async function DashboardPage() {
       {/* Search and Action Bar */}
       <SearchBar />
 
-      {/* Reports Table / Empty State */}
-      <div className="bg-white rounded-xl border border-border-secondary">
-        <EmptyState type="reports" />
-      </div>
+      {/* Recent Reports */}
+      <RecentReports reports={recentReports} />
     </div>
   );
 }

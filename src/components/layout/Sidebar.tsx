@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { usePathname } from "@/i18n/routing";
-import Link from "next/link";
+import { usePathname, Link } from "@/i18n/routing";
 import {
   LayoutDashboard,
   FileText,

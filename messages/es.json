@@ -44,6 +44,10 @@
       "noReports": "No se encontraron reportes",
       "noPatients": "No se encontraron pacientes"
     },
+    "recentReports": {
+      "title": "Reportes Recientes",
+      "noReports": "No hay reportes recientes"
+    },
     "veterinaryInfo": {
       "title": "Tu Veterinaria",
       "legalName": "Razón Social",
@@ -179,6 +183,29 @@
     }
   },
   "reports": {
+    "list": {
+      "title": "Reportes",
+      "newReport": "Nuevo Reporte",
+      "labels": {
+        "patient": "Paciente",
+        "speciesBreed": "Especie/Raza",
+        "type": "Tipo",
+        "date": "Fecha",
+        "owner": "Propietario",
+        "veterinarian": "Veterinario"
+      },
+      "status": {
+        "completed": "Completado",
+        "sent": "Enviado",
+        "pending": "Pendiente",
+        "draft": "Borrador"
+      },
+      "actions": {
+        "view": "Ver",
+        "edit": "Editar",
+        "download": "Descargar"
+      }
+    },
     "new": {
       "pageTitle": "Analizar Paciente",
       "pageDescription": "Completa los datos del paciente y sube las imágenes del estudio",
@@ -214,6 +241,56 @@
       "noImages": "No hay imágenes subidas",
       "clearForm": "Limpiar formulario",
       "continue": "Continuar"
+    }
+  },
+  "studies": {
+    "list": {
+      "title": "Mis Estudios",
+      "newStudy": "Nuevo Estudio",
+      "labels": {
+        "patient": "Paciente",
+        "speciesBreed": "Especie/Raza",
+        "type": "Tipo",
+        "date": "Fecha",
+        "veterinarian": "Veterinario"
+      },
+      "status": {
+        "completed": "Completado",
+        "inProgress": "En Progreso",
+        "pending": "Pendiente",
+        "cancelled": "Cancelado"
+      },
+      "actions": {
+        "view": "Ver",
+        "report": "Reporte"
+      }
+    }
+  },
+  "patients": {
+    "list": {
+      "title": "Pacientes",
+      "newPatient": "Nuevo Paciente",
+      "labels": {
+        "speciesBreed": "Especie/Raza",
+        "age": "Edad",
+        "gender": "Género",
+        "owner": "Propietario",
+        "phone": "Teléfono",
+        "lastVisit": "Última Visita"
+      },
+      "gender": {
+        "male": "Macho",
+        "female": "Hembra",
+        "unknown": "Desconocido"
+      },
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "actions": {
+        "view": "Ver",
+        "edit": "Editar"
+      }
     }
   },
   "language": {

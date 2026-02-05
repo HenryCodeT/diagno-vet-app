@@ -8,7 +8,7 @@ import { ChevronDown, ChevronUp, ArrowRight, RotateCcw } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/atoms/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/atoms/card/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/atoms/card";
 import { Input } from "@/components/ui/form-controls/primitive-inputs/input";
 import { Checkbox } from "@/components/ui/form-controls/primitive-inputs/checkbox";
 import { FormField } from "@/components/ui/form-controls/field-components/form-field";
@@ -184,6 +184,8 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                   >
                     <Input
                       type="date"
+                      inputSize="default"
+                      hasError={!!errors.patient?.date}
                       value={field.value ? field.value.toISOString().split("T")[0] : ""}
                       onChange={(e) => field.onChange(new Date(e.target.value))}
                     />
@@ -203,6 +205,8 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                   >
                     <Input
                       {...field}
+                      inputSize="default"
+                      hasError={!!errors.patient?.name}
                       placeholder={t("patientNamePlaceholder")}
                     />
                   </FormField>
@@ -277,9 +281,11 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                     >
                       <Input
                         type="number"
+                        inputSize="default"
+                        hasError={!!errors.patient?.weight}
                         step="0.1"
                         min="0"
-                        value={field.value || ""}
+                        value={field.value ?? ""}
                         onChange={(e) =>
                           field.onChange(
                             e.target.value ? parseFloat(e.target.value) : undefined
@@ -387,6 +393,7 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                     <FormField label={t("referringProfessional")}>
                       <Input
                         {...field}
+                        inputSize="default"
                         placeholder={t("referringProfessionalPlaceholder")}
                       />
                     </FormField>
@@ -406,6 +413,8 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                       <Input
                         {...field}
                         type="email"
+                        inputSize="default"
+                        hasError={!!errors.contact?.referringEmail}
                         placeholder={t("emailPlaceholder")}
                       />
                     </FormField>
@@ -420,6 +429,7 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                     <FormField label={t("guardian")}>
                       <Input
                         {...field}
+                        inputSize="default"
                         placeholder={t("guardianPlaceholder")}
                       />
                     </FormField>
@@ -439,6 +449,8 @@ export function NewReportForm({ locale }: NewReportFormProps) {
                       <Input
                         {...field}
                         type="email"
+                        inputSize="default"
+                        hasError={!!errors.contact?.guardianEmail}
                         placeholder={t("emailPlaceholder")}
                       />
                     </FormField>

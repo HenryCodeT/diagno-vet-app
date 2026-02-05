@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Heading } from "@/components/ui/atoms/heading";
 import { NewReportForm } from "./NewReportForm";
 
 interface NewReportPageProps {
@@ -24,9 +25,9 @@ export default async function NewReportPage({ params }: NewReportPageProps) {
     <div className="space-y-6">
       {/* Page Header */}
       <div>
-        <h1 className="text-2xl font-bold text-font-primary">
+        <Heading level={5} variant="default">
           {t("pageTitle")}
-        </h1>
+        </Heading>
         <p className="text-font-secondary mt-1">
           {t("pageDescription")}
         </p>
