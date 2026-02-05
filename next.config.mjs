@@ -5,6 +5,14 @@ const withNextIntl = createNextIntlPlugin(
 );
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  serverExternalPackages: ["@prisma/client", "prisma"],
+  experimental: {
+    outputFileTracingIncludes: {
+      "/api/**": ["./node_modules/.prisma/client/**", "./src/generated/prisma/**"],
+      "/**": ["./node_modules/.prisma/client/**", "./src/generated/prisma/**"],
+    },
+  },
+};
 
 export default withNextIntl(nextConfig);
