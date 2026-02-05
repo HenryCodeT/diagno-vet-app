@@ -1,0 +1,224 @@
+{
+  "common": {
+    "appName": "DiagnoVET",
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "success": "Operación exitosa"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "dashboard": "Panel",
+    "patients": "Pacientes",
+    "appointments": "Citas",
+    "reports": "Reportes",
+    "settings": "Configuración",
+    "logout": "Cerrar Sesión"
+  },
+  "navbar": {
+    "settings": "Configuración",
+    "settingsPersonal": "Personal",
+    "settingsVeterinary": "Veterinaria"
+  },
+  "sidebar": {
+    "dashboard": "Panel",
+    "myStudies": "Mis Estudios",
+    "patients": "Pacientes",
+    "reports": "Reportes",
+    "newReport": "Nuevo Reporte",
+    "collapse": "Colapsar menú",
+    "expand": "Expandir menú"
+  },
+  "dashboard": {
+    "welcome": "¡Bienvenido",
+    "successMessage": "Has completado exitosamente la configuración de tu cuenta.",
+    "stats": {
+      "totalReports": "Total Reportes",
+      "totalPatients": "Total Pacientes",
+      "activeReports": "Reportes Activos"
+    },
+    "search": {
+      "placeholder": "Buscar pacientes, tutores, referidores...",
+      "createReport": "CREAR NUEVO REPORTE"
+    },
+    "emptyState": {
+      "noReports": "No se encontraron reportes",
+      "noPatients": "No se encontraron pacientes"
+    },
+    "veterinaryInfo": {
+      "title": "Tu Veterinaria",
+      "legalName": "Razón Social",
+      "address": "Dirección",
+      "phone": "Teléfono"
+    },
+    "professionalInfo": {
+      "title": "Tu Perfil Profesional",
+      "name": "Nombre",
+      "title_label": "Título",
+      "license": "Matrícula",
+      "notProvided": "No proporcionado"
+    },
+    "quickActions": {
+      "title": "Acciones Rápidas",
+      "addPatient": "Agregar Paciente",
+      "scheduleAppointment": "Programar Cita",
+      "viewReports": "Ver Reportes"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar Sesión",
+      "subtitle": "Bienvenido a DiagnoVET",
+      "description": "Ingresa tus credenciales para acceder al sistema",
+      "googleButton": "Continuar con Google",
+      "orContinueWith": "o continúa con email",
+      "emailLabel": "Correo Electrónico",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Ingresa tu contraseña",
+      "rememberMe": "Recordarme",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "submitButton": "Iniciar Sesión",
+      "submitting": "Iniciando sesión...",
+      "noAccount": "¿No tienes cuenta?",
+      "signUp": "Regístrate",
+      "errors": {
+        "invalidCredentials": "Credenciales inválidas",
+        "emailRequired": "El correo electrónico es requerido",
+        "passwordRequired": "La contraseña es requerida",
+        "invalidEmail": "Correo electrónico inválido"
+      }
+    },
+    "register": {
+      "title": "Crear Cuenta",
+      "subtitle": "Únete a DiagnoVET",
+      "description": "Completa el formulario para crear tu cuenta",
+      "firstNameLabel": "Nombre",
+      "firstNamePlaceholder": "Juan",
+      "lastNameLabel": "Apellido",
+      "lastNamePlaceholder": "Pérez",
+      "emailLabel": "Correo Electrónico",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "passwordLabel": "Contraseña",
+      "passwordPlaceholder": "Mínimo 6 caracteres",
+      "confirmPasswordLabel": "Confirmar Contraseña",
+      "confirmPasswordPlaceholder": "Repite tu contraseña",
+      "submitButton": "Crear Cuenta",
+      "submitting": "Creando cuenta...",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "signIn": "Inicia sesión",
+      "errors": {
+        "generic": "Error al crear la cuenta",
+        "emailExists": "Este correo ya está registrado",
+        "passwordMismatch": "Las contraseñas no coinciden",
+        "passwordTooShort": "La contraseña debe tener al menos 6 caracteres"
+      }
+    }
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "¡Bienvenido a DiagnoVET!",
+      "description": "Estamos emocionados de tenerte aquí. Vamos a configurar tu cuenta para que puedas empezar.",
+      "continue": "Comenzar"
+    },
+    "features": {
+      "title": "¿Qué puedes hacer?",
+      "feature1": "Gestiona pacientes y sus historiales médicos de forma organizada",
+      "feature2": "Programa citas y recibe recordatorios automáticos",
+      "feature3": "Genera reportes y diagnósticos con asistencia de IA"
+    },
+    "veterinary": {
+      "title": "Información de la Veterinaria",
+      "subtitle": "Completa los datos de tu clínica veterinaria para continuar",
+      "legalNameLabel": "Razón Social",
+      "legalNamePlaceholder": "Clínica Veterinaria ABC S.A.C.",
+      "addressLabel": "Dirección",
+      "addressPlaceholder": "Av. Principal 123, Lima",
+      "phoneLabel": "Teléfono",
+      "phonePlaceholder": "+51 999 999 999",
+      "whyInfo": {
+        "title": "¿Por qué necesitamos esta información?",
+        "reason1": "Identificar tu clínica en el sistema",
+        "reason2": "Generar documentos oficiales con tus datos",
+        "reason3": "Facilitar la comunicación con tus clientes"
+      }
+    },
+    "professional": {
+      "title": "Casi listo...",
+      "subtitle": "Necesitamos pedirte un par de detalles más para mejorar la experiencia",
+      "phoneLabel": "Número de Teléfono",
+      "phonePlaceholder": "+51 999 999 999",
+      "titleLabel": "Título Profesional",
+      "titlePlaceholder": "Selecciona tu especialidad",
+      "titleOptions": {
+        "dr_male": "Dr. - Doctor en Medicina Veterinaria",
+        "dr_female": "Dra. - Doctora en Medicina Veterinaria",
+        "mv": "M.V. - Médico Veterinario"
+      },
+      "fullNameLabel": "Nombre Completo",
+      "fullNamePlaceholder": "Dr. Juan Pérez",
+      "licenseLabel": "Matrícula Profesional",
+      "licensePlaceholder": "Ej: MP 12345",
+      "licenseOptional": "(Opcional)",
+      "whyInfo": {
+        "title": "¿Por qué necesitamos esta información?",
+        "reason1": "Personalizar tu perfil profesional",
+        "reason2": "Mostrar tus credenciales a los clientes",
+        "reason3": "Generar reportes con tu información"
+      }
+    },
+    "ready": {
+      "title": "¡Todo listo!",
+      "description": "Tu cuenta está configurada. Ya puedes empezar a usar DiagnoVET.",
+      "start": "Ir al Panel"
+    },
+    "back": "Atrás",
+    "continue": "Continuar",
+    "errors": {
+      "generic": "Error al completar la configuración",
+      "requiredFields": "Por favor completa todos los campos requeridos"
+    }
+  },
+  "reports": {
+    "new": {
+      "pageTitle": "Analizar Paciente",
+      "pageDescription": "Completa los datos del paciente y sube las imágenes del estudio",
+      "patientInfo": "Información del Paciente",
+      "contactInfo": "Información de Contacto",
+      "images": "Imágenes del Estudio",
+      "date": "Fecha",
+      "patientName": "Nombre del Paciente",
+      "patientNamePlaceholder": "Ej. Max, Luna",
+      "species": "Especie",
+      "speciesPlaceholder": "Selecciona especie",
+      "breed": "Raza",
+      "breedPlaceholder": "Selecciona raza",
+      "noBreeds": "Selecciona una especie primero",
+      "birthDate": "Fecha de Nacimiento",
+      "age": "Edad:",
+      "weight": "Peso",
+      "unit": "Unidad",
+      "gender": "Género",
+      "genderPlaceholder": "Selecciona género",
+      "neutered": "Castrado / Esterilizado",
+      "studyType": "Tipo de Estudio",
+      "studyTypePlaceholder": "Selecciona tipo de estudio",
+      "referringProfessional": "Profesional Derivante",
+      "referringProfessionalPlaceholder": "Dr. Nombre",
+      "referringEmail": "Email del Profesional",
+      "guardian": "Tutor / Propietario",
+      "guardianPlaceholder": "Nombre del tutor",
+      "guardianEmail": "Email del Tutor",
+      "emailPlaceholder": "correo@ejemplo.com",
+      "dropzoneText": "Arrastra imágenes aquí o haz clic para seleccionar",
+      "dropzoneActiveText": "Suelta las imágenes aquí...",
+      "noImages": "No hay imágenes subidas",
+      "clearForm": "Limpiar formulario",
+      "continue": "Continuar"
+    }
+  },
+  "language": {
+    "english": "Inglés",
+    "spanish": "Español",
+    "switchTo": "Cambiar a {language}"
+  }
+}

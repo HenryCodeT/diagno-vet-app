@@ -1,0 +1,224 @@
+{
+  "common": {
+    "appName": "DiagnoVET",
+    "loading": "Loading...",
+    "error": "An error has occurred",
+    "success": "Operation successful"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "patients": "Patients",
+    "appointments": "Appointments",
+    "reports": "Reports",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "navbar": {
+    "settings": "Settings",
+    "settingsPersonal": "Personal",
+    "settingsVeterinary": "Veterinary"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "myStudies": "My Studies",
+    "patients": "Patients",
+    "reports": "Reports",
+    "newReport": "New Report",
+    "collapse": "Collapse menu",
+    "expand": "Expand menu"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "successMessage": "You have successfully completed your account setup.",
+    "stats": {
+      "totalReports": "Total Reports",
+      "totalPatients": "Total Patients",
+      "activeReports": "Active Reports"
+    },
+    "search": {
+      "placeholder": "Search patients, guardians, referrers...",
+      "createReport": "CREATE NEW REPORT"
+    },
+    "emptyState": {
+      "noReports": "No reports found",
+      "noPatients": "No patients found"
+    },
+    "veterinaryInfo": {
+      "title": "Your Veterinary",
+      "legalName": "Legal Name",
+      "address": "Address",
+      "phone": "Phone"
+    },
+    "professionalInfo": {
+      "title": "Your Professional Profile",
+      "name": "Name",
+      "title_label": "Title",
+      "license": "License",
+      "notProvided": "Not provided"
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "addPatient": "Add Patient",
+      "scheduleAppointment": "Schedule Appointment",
+      "viewReports": "View Reports"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Welcome to DiagnoVET",
+      "description": "Enter your credentials to access the system",
+      "googleButton": "Continue with Google",
+      "orContinueWith": "or continue with email",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "email@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Enter your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "submitButton": "Sign In",
+      "submitting": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "errors": {
+        "invalidCredentials": "Invalid credentials",
+        "emailRequired": "Email is required",
+        "passwordRequired": "Password is required",
+        "invalidEmail": "Invalid email address"
+      }
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join DiagnoVET",
+      "description": "Fill out the form to create your account",
+      "firstNameLabel": "First Name",
+      "firstNamePlaceholder": "John",
+      "lastNameLabel": "Last Name",
+      "lastNamePlaceholder": "Doe",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "email@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Minimum 6 characters",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "Repeat your password",
+      "submitButton": "Create Account",
+      "submitting": "Creating account...",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "errors": {
+        "generic": "Error creating account",
+        "emailExists": "This email is already registered",
+        "passwordMismatch": "Passwords do not match",
+        "passwordTooShort": "Password must be at least 6 characters"
+      }
+    }
+  },
+  "onboarding": {
+    "welcome": {
+      "title": "Welcome to DiagnoVET!",
+      "description": "We're excited to have you here. Let's set up your account so you can get started.",
+      "continue": "Get Started"
+    },
+    "features": {
+      "title": "What can you do?",
+      "feature1": "Manage patients and their medical records in an organized way",
+      "feature2": "Schedule appointments and receive automatic reminders",
+      "feature3": "Generate reports and diagnoses with AI assistance"
+    },
+    "veterinary": {
+      "title": "Veterinary Information",
+      "subtitle": "Complete your veterinary clinic data to continue",
+      "legalNameLabel": "Legal Name",
+      "legalNamePlaceholder": "ABC Veterinary Clinic LLC",
+      "addressLabel": "Address",
+      "addressPlaceholder": "123 Main Street, City",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+1 555 555 5555",
+      "whyInfo": {
+        "title": "Why do we need this information?",
+        "reason1": "Identify your clinic in the system",
+        "reason2": "Generate official documents with your data",
+        "reason3": "Facilitate communication with your clients"
+      }
+    },
+    "professional": {
+      "title": "Almost done...",
+      "subtitle": "We need to ask you for a couple more details to improve the experience",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+1 555 555 5555",
+      "titleLabel": "Professional Title",
+      "titlePlaceholder": "Select your specialty",
+      "titleOptions": {
+        "dr_male": "Dr. - Doctor of Veterinary Medicine",
+        "dr_female": "Dra. - Doctor of Veterinary Medicine (Female)",
+        "mv": "M.V. - Veterinary Physician"
+      },
+      "fullNameLabel": "Full Name",
+      "fullNamePlaceholder": "Dr. John Doe",
+      "licenseLabel": "Professional License",
+      "licensePlaceholder": "E.g: MP 12345",
+      "licenseOptional": "(Optional)",
+      "whyInfo": {
+        "title": "Why do we need this information?",
+        "reason1": "Personalize your professional profile",
+        "reason2": "Show your credentials to clients",
+        "reason3": "Generate reports with your information"
+      }
+    },
+    "ready": {
+      "title": "All set!",
+      "description": "Your account is configured. You can now start using DiagnoVET.",
+      "start": "Go to Dashboard"
+    },
+    "back": "Back",
+    "continue": "Continue",
+    "errors": {
+      "generic": "Error completing setup",
+      "requiredFields": "Please complete all required fields"
+    }
+  },
+  "reports": {
+    "new": {
+      "pageTitle": "Analyze Patient",
+      "pageDescription": "Fill in the patient data and upload study images",
+      "patientInfo": "Patient Information",
+      "contactInfo": "Contact Information",
+      "images": "Study Images",
+      "date": "Date",
+      "patientName": "Patient Name",
+      "patientNamePlaceholder": "e.g. Max, Luna",
+      "species": "Species",
+      "speciesPlaceholder": "Select species",
+      "breed": "Breed",
+      "breedPlaceholder": "Select breed",
+      "noBreeds": "Select a species first",
+      "birthDate": "Birth Date",
+      "age": "Age:",
+      "weight": "Weight",
+      "unit": "Unit",
+      "gender": "Gender",
+      "genderPlaceholder": "Select gender",
+      "neutered": "Neutered / Spayed",
+      "studyType": "Study Type",
+      "studyTypePlaceholder": "Select study type",
+      "referringProfessional": "Referring Professional",
+      "referringProfessionalPlaceholder": "Dr. Name",
+      "referringEmail": "Professional Email",
+      "guardian": "Guardian / Owner",
+      "guardianPlaceholder": "Guardian's name",
+      "guardianEmail": "Guardian Email",
+      "emailPlaceholder": "email@example.com",
+      "dropzoneText": "Drag images here or click to select",
+      "dropzoneActiveText": "Drop the images here...",
+      "noImages": "No images uploaded",
+      "clearForm": "Clear form",
+      "continue": "Continue"
+    }
+  },
+  "language": {
+    "english": "English",
+    "spanish": "Spanish",
+    "switchTo": "Switch to {language}"
+  }
+}
